@@ -11,8 +11,8 @@ contract EtherWallet {
     receive() external payable {}
 
     function withdraw(uint256 _amount) public {
-        require(msg.sender == owner, "Owner Only!.");
-        require(_amount <= address(this).balance, "Balance Low.");
+        require(msg.sender == owner, "Only the owner can withdraw Ether.");
+        require(_amount <= address(this).balance, "Insufficient balance.");
         owner.transfer(_amount);
     }
 
